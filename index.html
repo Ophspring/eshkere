@@ -3,94 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приветствие | Proxy</title>
+    <title>Мои Прокси</title>
     <style>
-        /* Обнуляем отступы и задаем современный шрифт */
+        /* Обнуляем отступы и задаем шрифт */
         * {
             margin: 0;
             padding: 0;
-
             box-sizing: border-box;
         }
 
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            /* Красивый мягкий градиент на фоне */
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            /* Мягкий градиент на фоне */
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
             height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             color: #333;
+            padding: 20px;
+        }
+
+        /* Анимация фона для красоты */
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .container {
-            background: rgba(255, 255, 255, 0.95); /* Полупрозрачный белый фон */
+            background: rgba(255, 255, 255, 0.95);
             padding: 40px 30px;
-            border-radius: 24px;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-            width: 90%;
-            max-width: 400px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 450px;
             text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
         h1 {
-            font-size: 3.5rem; /* Очень крупный текст */
+            font-size: 4rem;
             margin-bottom: 10px;
-            color: #2d3436;
+            background: -webkit-linear-gradient(#4facfe, #00f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1;
         }
 
-        p {
-            font-size: 1.1rem;
-            color: #636e72;
-            margin-bottom: 30px;
+        .subtitle {
+            margin-top: 10px;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
         }
 
-        .button-group {
+        /* Контейнер для списка кнопок */
+        .link-list {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
 
         .btn {
             display: block;
             text-decoration: none;
             color: white;
-            background: #6c5ce7;
-            padding: 16px 20px;
-            border-radius: 12px;
+            padding: 14px 20px;
+            border-radius: 16px;
             font-weight: 600;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            /* Чтобы текст не переносился странно */
-            word-wrap: break-word;
+            font-size: 1rem;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Эффект при наведении */
-        .btn:hover {
-            background: #a29bfe;
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
-        }
-
-        /* Эффект при нажатии */
+        /* Эффект нажатия */
         .btn:active {
-            transform: translateY(0);
+            transform: scale(0.98);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
 
-        /* Второй цвет для разнообразия (опционально) */
-        .btn-alt {
-            background: #00b894;
-        }
-        .btn-alt:hover {
-            background: #55efc4;
+        /* --- Индивидуальные цвета для кнопок --- */
+        
+        /* 1. Иран (Фиолетовый) */
+        .btn-iran { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        
+        /* 2. Финляндия (Зеленый) */
+        .btn-finland { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
+        
+        /* 3. Сойка (Ярко-розовый/Малиновый) */
+        .btn-soika { background: linear-gradient(135deg, #ff416c 0%, #ff4b2b 100%); }
+        
+        /* 4. Виртуал (Синий) */
+        .btn-webvirt { background: linear-gradient(135deg, #2193b0 0%, #6dd5ed 100%); }
+        
+        /* 5. IP (Темно-синий) */
+        .btn-ip { background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%); }
+        
+        /* 6. Mamma (Золотистый/Оранжевый) */
+        .btn-mama { background: linear-gradient(135deg, #f2994a 0%, #f2c94c 100%); color: #333; text-shadow: 0 1px 2px rgba(255,255,255,0.5); }
+
+        /* Ховер эффект (подсветка) */
+        .btn:hover {
+            transform: translateY(-3px);
+            filter: brightness(1.1);
         }
 
-        /* Адаптивность для маленьких экранов */
+        /* Адаптив для телефонов */
         @media (max-width: 480px) {
-            h1 {
-                font-size: 2.5rem;
-            }
+            h1 { font-size: 3rem; }
+            .container { padding: 30px 15px; }
+            .btn { padding: 12px 15px; font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -98,15 +127,37 @@
 
     <div class="container">
         <h1>Hi!</h1>
-        <p>Выберите способ подключения:</p>
+        <div class="subtitle">Выберите удобное соединение</div>
 
-        <div class="button-group">
-            <a href="tg://proxy?server=172.65.234.91&port=9443&secret=ee09db815a6d82a31fda76f872230c69d7706b676275696c642e6f7267" class="btn">
-                🌐 Подключить Proxy 1 (IP)
+        <div class="link-list">
+            <!-- Кнопка 1 -->
+            <a href="tg://proxy?server=iranroad.shop&port=25565&secret=ee1603010200010001fc030386e24c3add626973636f7474692e79656b74616e65742e636f6d" class="btn btn-iran" target="_blank">
+                🇮🇷 Iran Road
             </a>
-            
-            <a href="tg://proxy?server=tg.soika.site&port=443&secret=ee28f8ec82a175c1890c4b4da2342f50f67616261676f6f6c2e73697465" class="btn btn-alt">
-                🌐 Подключить Proxy 2 (Domain)
+
+            <!-- Кнопка 2 -->
+            <a href="tg://proxy?server=bucket-finland.kimt.space&port=443&secret=ee4f0a7e5cc85416fbd743f2d89da0c8bf6275636b65742d66696e6c616e642e6b696d742e7370616365" class="btn btn-finland" target="_blank">
+                🇫🇮 Bucket Finland
+            </a>
+
+            <!-- Кнопка 3 -->
+            <a href="tg://proxy?server=tg.soika.site&port=443&secret=ee28f8ec821a175c1890c4b4da2342f50f67616261676f6f6c2e73697465" class="btn btn-soika" target="_blank">
+                🧸 Soika Site
+            </a>
+
+            <!-- Кнопка 4 -->
+            <a href="tg://proxy?server=mtp.webvirt.cloud&port=443&secret=ee938dd87467bc49301de2e9765cf20f4374656c2e776562766972742e636c6f7564" class="btn btn-webvirt" target="_blank">
+                ☁️ WebVirt Cloud
+            </a>
+
+            <!-- Кнопка 5 -->
+            <a href="tg://proxy?server=172.65.234.91&port=9443&secret=ee09db815a6d82a31fda76f872230c69d7706b676275696c642e6f7267" class="btn btn-ip" target="_blank">
+                🌐 Biscotti (IP)
+            </a>
+
+            <!-- Кнопка 6 -->
+            <a href="tg://proxy?server=live.russia.mambabot.net&port=7866&secret=ee843223f372ef32e718c5271b5580714c6d656469612e737465616d706f77657265642e636f6d" class="btn btn-mama" target="_blank">
+                🇷🇺 Mamba Bot
             </a>
         </div>
     </div>
