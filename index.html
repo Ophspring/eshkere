@@ -3,23 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Приветствие</title>
+    <title>Приветствие | Proxy</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin-top: 50px;
-            background-color: #f4f4f9;
+        /* Обнуляем отступы и задаем современный шрифт */
+        * {
+            margin: 0;
+            padding: 0;
+
+            box-sizing: border-box;
         }
-        h1 {
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            /* Красивый мягкий градиент на фоне */
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             color: #333;
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95); /* Полупрозрачный белый фон */
+            padding: 40px 30px;
+            border-radius: 24px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.5rem; /* Очень крупный текст */
+            margin-bottom: 10px;
+            color: #2d3436;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #636e72;
+            margin-bottom: 30px;
+        }
+
+        .button-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn {
+            display: block;
+            text-decoration: none;
+            color: white;
+            background: #6c5ce7;
+            padding: 16px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            /* Чтобы текст не переносился странно */
+            word-wrap: break-word;
+        }
+
+        /* Эффект при наведении */
+        .btn:hover {
+            background: #a29bfe;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.4);
+        }
+
+        /* Эффект при нажатии */
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Второй цвет для разнообразия (опционально) */
+        .btn-alt {
+            background: #00b894;
+        }
+        .btn-alt:hover {
+            background: #55efc4;
+        }
+
+        /* Адаптивность для маленьких экранов */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Hi!</h1>
-    <p><a href="tg://proxy?server=172.65.234.91&port=9443&secret=ee09db815a6d82a31fda76f872230c69d7706b676275696c642e6f7267">Подключить Proxy 1 (IP)</a><br>
-<a href="tg://proxy?server=tg.soika.site&port=443&secret=ee28f8ec821a175c1890c4b4da2342f50f67616261676f6f6c2e73697465">Подключить Proxy 2 (Domain)</a>
-</p>
+
+    <div class="container">
+        <h1>Hi!</h1>
+        <p>Выберите способ подключения:</p>
+
+        <div class="button-group">
+            <a href="tg://proxy?server=172.65.234.91&port=9443&secret=ee09db815a6d82a31fda76f872230c69d7706b676275696c642e6f7267" class="btn">
+                🌐 Подключить Proxy 1 (IP)
+            </a>
+            
+            <a href="tg://proxy?server=tg.soika.site&port=443&secret=ee28f8ec82a175c1890c4b4da2342f50f67616261676f6f6c2e73697465" class="btn btn-alt">
+                🌐 Подключить Proxy 2 (Domain)
+            </a>
+        </div>
+    </div>
+
 </body>
 </html>
